@@ -38,18 +38,21 @@
                   <li>
                     <a  href="/inicio"></i> Inicio</a>
                   </li>
-                  @if(true)
                   <li>
-                    <a href="#"> modulo de pestaña</a>
+                    <a href="#"> Bitácoras personales</a>
                   </li>
-                  @endif
+                  <li>
+                    <a href="#"> Bitácora de hoy</a>
+                  </li>
+              </ul>
+
             </div>
 
         </nav>
         <div id="page-wrapper">
         <div class="header"> 
             <h1 class="page-header">
-              Bienvenido a la plataforma de bitácoras de C&C Consultores
+              <strong>Bienvenido a la plataforma de bitácoras de C&C Consultores</strong>
             </h1>				    			
         </div>
         <div id="page-inner">			

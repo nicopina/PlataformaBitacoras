@@ -1,13 +1,17 @@
 body {
   font-family: 'Roboto', sans-serif;
   color:#FFFFFF;
-  background-image: url("../assets/images/FondoLogin.png");
+  background-image: url("../images/FondoLogin.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-color: #999;
 
 }
 
 
-input[type=ID], input[type=Contraseña] {
+.texto {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

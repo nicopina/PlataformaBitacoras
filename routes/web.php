@@ -13,8 +13,9 @@ use App\Http\Controllers\SessionsController;
 |
 */
 
-Route::get('/', [SessionsController::class,'Login'])->name('login.index');
-Route::post('/login', [SessionsController::class,'store'])->name('login.login');
+Route::get('/', [SessionsController::class,'Login']);
+Route::view('/login', 'Login');
+Route::post('/login', [SessionsController::class,'store']);
 Route::get('/inicio', function(){
-    return view('layouts.Inicio');
+    return view('InicioUsuario');
 });

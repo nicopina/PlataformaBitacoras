@@ -25,7 +25,6 @@ class Usuarios extends Migration
             $table->integer('ID_Area');
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp('email_verified_at')->nullable();
         });
     }
 

@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
     public function login() {
-        return view('Login');
+        return redirect()->to('/login');
     }
 
     public function store(){
-        if(auth()->attempt(request(['ID','Contraseña'])) == 'true'){
-            return back()->withErrors([
-                'message' => 'Credencialesn inválidas'
-            ]);
+        $credentials = request()->only('ID','Contraseña');
+        if(Auth::attempt($credentials)){
+            return 'login exitoso';
         }
-        return redirect()->to('/inicio');
+        return 'login fracaso';
+
     }
     public function destroy(){
         auth()->logout();

@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inicio</title>
     <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/font-awesome.css')}}" rel="stylesheet" />
     <!-- Morris Chart Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="{{asset('assets/js/morris/morris-0.4.3.min.css')}}" rel="stylesheet" />
     <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/custom-styles.css')}}" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css"> 
+    <link rel="stylesheet" href="{{asset('assets/js/Lightweight-Chart/cssCharts.css')}}"> 
 </head>
 
 <body>
@@ -33,42 +33,53 @@
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
-              
                 <ul class="nav" id="main-menu">
 
-                  <li>
-                    <a  href="/inicio"></i> Inicio</a>
+                <li>
+                    <a  href="/Usuario"></i> Inicio</a>
                   </li>
-                  @if(true)
                   <li>
-                    <a href="#"> modulo de pestaña</a>
+                    <a href="/Usuario.bitacoras"> Bitácoras personales</a>
                   </li>
-                  @endif
-                </ul>
-                
-                  <h3>Hora del servidor:</h3>
-                  <h3 id="HoraActual"></h3>	
-                  
+                  <li>
+                    <a href="/Usuario.hoy"> Bitácora de hoy</a>
+                  </li>
+                  </ul>
             </div>
 
         </nav>
         <div id="page-wrapper">
         <div class="header"> 
             <h1 class="page-header">
-            <strong>Bienvenido a la plataforma de bitácoras de C&C Consultores</strong>
-            </h1>				    		
-            
+              <strong>Bitácora de hoy</strong>
+            </h1>				    			
         </div>
         <div id="page-inner">			
-            <p class="page-header">
-                Para ver tu historial de bitácoras ve a la sección <strong>“Bitácoras personales”</strong>.
-            </p>	
-            <p class="page-header">
-                Para modificar tu bitácora del día de hoy ve a la sección <strong>“Bitácora de hoy”</strong>.
-            </p>	
-            <p class="page-header">
-                No olvides hacer tu bitácora antes de que se acabe el día, ya que <strong>no podrás modificarla después de las 00:00</strong>.
-            </p>
+            @if(isset($entradas))
+            <div class="container">
+              <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <td>Hora de inicio</td>
+                        <td>Frecuencia</td>
+                        <td>Nombre actividad</td>
+                        <td>Descripción</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($entradas as $entrada)
+                        <tr>
+                          <td>{{$entrada->Hora}}</td>
+                          <td>{{$entrada->Frecuencia}}</td>
+                          <td>{{$entrada->Nombre_actividad}}</td>
+                          <td >{{$entrada->Descripcion_actividad}}</td>
+                      @endforeach
+                    </tbody>
+                  </table>           
+              </div>
+            </div>
+            @endif
         </div>
     </div>
     </div>
@@ -93,7 +104,6 @@
 	
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
-    <script src="assets/js/hora.js"></script>
 
       
     <!-- Chart Js -->

@@ -17,6 +17,7 @@ class Bitacoras extends Migration
             $table->bigIncrements('ID_Bitacora')->unique();
             $table->integer('ID_Usuario');
             $table->date('Fecha');
+            $table->foreign('ID_Usuario')->references('ID')->on('Users');
         });
     }
 

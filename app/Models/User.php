@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $primaryKey = "ID";
-
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -52,5 +52,13 @@ class User extends Authenticatable
 
     public function setPasswordAttributes($password){
         $this->attributes['Contraseña'] = bcrypt($password);
+    }
+    public function setUpdatedAtAttribute($value)
+    {
+    // to Disable updated_at
+    }
+    public function setCreatedAtAttribute($value)
+    {
+    // to Disable created_at
     }
 }

@@ -36,13 +36,13 @@
                 <ul class="nav" id="main-menu">
 
                   <li>
-                    <a  href="/inicio"></i> Inicio</a>
+                    <a  href="/Usuario"></i> Inicio</a>
                   </li>
                   <li>
-                    <a href="#"> Bitácoras personales</a>
+                    <a href="/Usuario.bitacoras"> Bitácoras personales</a>
                   </li>
                   <li>
-                    <a href="#"> Bitácora de hoy</a>
+                    <a href="/Usuario.hoy"> Bitácora de hoy</a>
                   </li>
               </ul>
 
@@ -63,7 +63,7 @@
                 Para modificar tu bitácora del día de hoy ve a la sección <strong>“Bitácora de hoy”</strong>.
             </p>	
             <p class="page-header">
-                No olvides hacer tu bitácora antes de que se acabe el día, ya que no podrás modificarla <strong>después de las 00:00</strong>.
+                No olvides hacer tu bitácora antes de que se acabe el día, ya que <strong>no podrás modificarla después de las 00:00</strong>.
             </p>
         </div>
     </div>

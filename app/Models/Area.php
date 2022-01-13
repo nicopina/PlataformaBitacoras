@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'ID_Area',
+        'Nombre'
+    ];
+
+    public function setUpdatedAtAttribute($value)
+    {
+    // to Disable updated_at
+    }
+    public function setCreatedAtAttribute($value)
+    {
+    // to Disable created_at
+    }
 }

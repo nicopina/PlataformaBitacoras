@@ -33,42 +33,59 @@
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
-              
                 <ul class="nav" id="main-menu">
 
-                  <li>
-                    <a  href="/inicio"></i> Inicio</a>
+                <li>
+                    <a  href="/Usuario"></i> Inicio</a>
                   </li>
-                  @if(true)
                   <li>
-                    <a href="#"> modulo de pestaña</a>
+                    <a href="/Usuario.bitacoras"> Bitácoras personales</a>
                   </li>
-                  @endif
-                </ul>
-                
-                  <h3>Hora del servidor:</h3>
-                  <h3 id="HoraActual"></h3>	
-                  
+                  <li>
+                    <a href="/Usuario.hoy"> Bitácora de hoy</a>
+                  </li>
+              </ul>
+
             </div>
 
         </nav>
         <div id="page-wrapper">
         <div class="header"> 
             <h1 class="page-header">
-            <strong>Bienvenido a la plataforma de bitácoras de C&C Consultores</strong>
-            </h1>				    		
-            
+              <strong>Tus bitácoras</strong>
+            </h1>				    			
         </div>
         <div id="page-inner">			
-            <p class="page-header">
-                Para ver tu historial de bitácoras ve a la sección <strong>“Bitácoras personales”</strong>.
-            </p>	
-            <p class="page-header">
-                Para modificar tu bitácora del día de hoy ve a la sección <strong>“Bitácora de hoy”</strong>.
-            </p>	
-            <p class="page-header">
-                No olvides hacer tu bitácora antes de que se acabe el día, ya que <strong>no podrás modificarla después de las 00:00</strong>.
-            </p>
+        @if(isset($bitacoras))
+        <br>
+            <div class="container">
+              <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <td>Fecha</td>
+                        <td>Acciones</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($bitacoras as $bitacora)
+                        <tr>
+                          <td>{{$bitacora->Fecha}}</td>
+                          <td>
+                            
+                          <form action="{{url('/Usuario.bitacoras/'.$bitacora->ID_Bitacora)}}" method="POST">
+                            @csrf
+                            {{method_field('GET')}}
+                            <button type="submit">Ver</button> 
+                          </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>           
+              </div>
+            </div>
+            @endif
         </div>
     </div>
     </div>
@@ -93,7 +110,6 @@
 	
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
-    <script src="assets/js/hora.js"></script>
 
       
     <!-- Chart Js -->

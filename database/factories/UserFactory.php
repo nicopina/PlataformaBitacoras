@@ -16,8 +16,7 @@ class UserFactory extends Factory
     {
         return [
             'ID' => 0,
-            'email_verified_at' => now(),
-            'Contraseña' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'Contraseña' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
             'Rol'=> 0,
             'Bloqueado'=> false,
@@ -37,9 +36,9 @@ class UserFactory extends Factory
     public function unverified()
     {
         return $this->state(function (array $attributes) {
-            return [
+            /* return [
                 'email_verified_at' => null,
-            ];
+            ]; */
         });
     }
 }

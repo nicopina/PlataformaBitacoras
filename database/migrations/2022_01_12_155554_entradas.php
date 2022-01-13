@@ -15,11 +15,12 @@ class Entradas extends Migration
     {
         Schema::create('Entradas', function (Blueprint $table) {
             $table->bigIncrements('ID_Entrada')->unique();
-            $table->integer('ID_Bitacora');
+            $table->unsignedbiginteger('ID_Bitacora');
             $table->time('Hora');
             $table->string('Frecuencia');
             $table->string('Nombre_actividad');
-            $table->text('Descripcion_actividad');            
+            $table->text('Descripcion_actividad');  
+            $table->foreign('ID_Bitacora')->references('ID_Bitacora')->on('Bitacoras');          
         });
     }
 

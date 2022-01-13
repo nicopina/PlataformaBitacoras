@@ -14,7 +14,7 @@ class Areas extends Migration
     public function up()
     {
         Schema::create('Areas', function (Blueprint $table) {
-            $table->string('ID_Area')->unique();
+            $table->integer('ID_Area')->unique();
             $table->string('Nombre');          
         });
     }

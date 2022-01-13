@@ -24,7 +24,7 @@ class Usuarios extends Migration
             $table->string('Segundo_apellido');
             $table->integer('ID_Area');
             $table->rememberToken();
-            $table->timestamps();
+            $table->foreign('ID_Area')->references('ID_Area')->on('Areas');
         });
     }
 

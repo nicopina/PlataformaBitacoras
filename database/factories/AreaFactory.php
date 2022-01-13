@@ -14,7 +14,8 @@ class AreaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ID_Area' => 0,
+            'Nombre' => 'sin área'
         ];
     }
 }

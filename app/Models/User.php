@@ -6,59 +6,63 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
-    protected $primaryKey = "ID";
-    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var string[]
      */
     protected $fillable = [
-        'ID',
-        'Contraseña',
-        'Rol',
+        'user',
+        'password',
         'Bloqueado',
         'Nombre',
         'Segundo_nombre',
         'Apellido',
         'Segundo_apellido',
-        'ID_Area'
+        'ID_Area',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
-        'Contraseña',
+        'password',
         'remember_token',
+        /* 'two_factor_recovery_codes',
+        'two_factor_secret', */
     ];
 
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
-        // 'email_verified_at' => 'datetime',
+        /* 'email_verified_at' => 'datetime', */
     ];
 
-    public function setPasswordAttributes($password){
-        $this->attributes['Contraseña'] = bcrypt($password);
-    }
-    public function setUpdatedAtAttribute($value)
-    {
-    // to Disable updated_at
-    }
-    public function setCreatedAtAttribute($value)
-    {
-    // to Disable created_at
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        // 'profile_photo_url',
+    ];
 }

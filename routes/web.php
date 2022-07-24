@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\admin\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +14,10 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-Route::get('/', [SessionsController::class,'Login']);
-Route::view('/login', 'Login');
-Route::post('/login', [SessionsController::class,'store']);
-
-Route::get('/inicio', function(){
-    return view('layouts.Inicio');
+Route::get('/', function () {
+    return redirect()->to('/login');
+    // return view('auth.login');
 });
 
-// Usuario
-Route::get('/Usuario', [UsuarioController::class,'Inicio']);
-Route::get('/Usuario.hoy', [UsuarioController::class,'Hoy']);
-Route::post('/Usuario.hoy', [UsuarioController::class,'Ingresar_Entrada']);
-Route::delete('/Usuario.hoy/{id}', [UsuarioController::class,'Eliminar_entrada']);
-Route::patch('/Usuario.hoy/{id}', [UsuarioController::class,'Editar_entrada']);
-Route::get('/Usuario.hoy/{id}', [UsuarioController::class,'Seleccionar_entrada']);
-Route::get('/Usuario.bitacoras', [UsuarioController::class,'Bitacoras']);
-Route::get('/Usuario.bitacoras/{id}', [UsuarioController::class,'Ver_bitacora']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'inicio'])->name('dashboard');
+

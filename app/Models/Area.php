@@ -9,6 +9,7 @@ class Area extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = "ID_Area";
     protected $fillable = [
         'ID_Area',
         'Nombre'

@@ -12,7 +12,7 @@ class Entrada extends Model
     protected $primaryKey = "ID_Entrada";
 
     protected $fillable = [
-        'ID_Bitacora',
+        "ID_Bitacora",
         'Hora',
         'Frecuencia',
         'Nombre_actividad',

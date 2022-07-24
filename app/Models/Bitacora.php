@@ -12,7 +12,6 @@ class Bitacora extends Model
     protected $primaryKey = "ID_Bitacora";
 
     protected $fillable = [
-        'ID_Bitacora',
         'ID_Usuario',
         'Fecha'
     ];
